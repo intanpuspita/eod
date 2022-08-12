@@ -68,7 +68,6 @@ public class App {
 				
 				toIndex = toIndex > numData ? numData : toIndex;
 				
-				System.out.println("from " + fromIndex + " to " + toIndex);
 				List<Customer> batch = customerStorage.getSubList(fromIndex, toIndex);
 				
 				executor.execute(new CalculateAvgBalanced(i, batch, customerStorage));
