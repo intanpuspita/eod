@@ -7,12 +7,12 @@ import java.util.Map;
 import model.Customer;
 import model.CustomerStorage;
 
-public class CalculateFreeTransferMoreThan150 implements Runnable {
+public class CalculateAdditionalBalanceMoreThan150 implements Runnable {
 	int threadNo;
 	List<Customer> customers;
 	CustomerStorage customerStorage;
 	
-	public CalculateFreeTransferMoreThan150(int threadNo, List<Customer> customers, CustomerStorage customerStorage) {
+	public CalculateAdditionalBalanceMoreThan150(int threadNo, List<Customer> customers, CustomerStorage customerStorage) {
 		this.threadNo = threadNo;
 		this.customers = customers;
 		this.customerStorage = customerStorage;
@@ -25,8 +25,7 @@ public class CalculateFreeTransferMoreThan150 implements Runnable {
 				Map<String, Integer> newValues = new HashMap<>();
 				
 				if(c.getBalanced() >= 150) {
-					int freeTransfer = 25;
-					newValues.put("freeTransfer", freeTransfer);
+					newValues.put("additionalBalanced", 25);
 				}
 				
 				newValues.put("thread2b", threadNo);

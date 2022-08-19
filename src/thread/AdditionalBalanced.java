@@ -28,11 +28,11 @@ public class AdditionalBalanced implements Runnable {
 			for(Customer c : customers) {
 				Map<String, Integer> newValues = new HashMap<>();
 				
-				if(c.getSeqNo()+1 <= quota)
+				if(c.getSeqNo()+1 <= quota) {
 					newValues.put("additionalBalanced", benefit);
-				
-				newValues.put("thread3", threadNo);
-				customerStorage.updateCustomer(c.getSeqNo(), newValues);
+					newValues.put("thread3", threadNo);
+					customerStorage.updateCustomer(c.getSeqNo(), newValues);
+				}
 			}
 		} catch(Exception e) {
 			System.out.println("Error in AdditionalBalanced Thread No " + threadNo + " : " + e.getMessage());

@@ -12,7 +12,7 @@ import model.CustomerStorage;
 import thread.AdditionalBalanced;
 import thread.CalculateAvgBalanced;
 import thread.CalculateFreeTransferLessThan150;
-import thread.CalculateFreeTransferMoreThan150;
+import thread.CalculateAdditionalBalanceMoreThan150;
 
 public class App {
 	public static void main(String[] args) {
@@ -72,8 +72,9 @@ public class App {
 				
 				executor.execute(new CalculateAvgBalanced(i, batch, customerStorage));
 				executor.execute(new CalculateFreeTransferLessThan150(i, batch, customerStorage));
-				executor.execute(new CalculateFreeTransferMoreThan150(i, batch, customerStorage));
-				executor.execute(new AdditionalBalanced(i, batch, customerStorage, benefitQuota, benefitForEachUser));
+				executor.execute(new CalculateAdditionalBalanceMoreThan150(i, batch, customerStorage));
+				if(fromIndex <= benefitQuota)
+					executor.execute(new AdditionalBalanced(i, batch, customerStorage, benefitQuota, benefitForEachUser));
 				
 				fromIndex = toIndex;
 			}
